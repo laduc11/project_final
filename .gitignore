@@ -1,0 +1,7 @@
+.settings
+Debug
+Drivers
+.cproject
+.mxproject
+.project
+STM32F103RBTX_FLASH.ld
