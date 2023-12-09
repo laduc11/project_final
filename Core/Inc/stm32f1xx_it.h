@@ -57,7 +57,10 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 void TIM2_IRQHandler(void);
+<<<<<<< HEAD
 void USART2_IRQHandler(void);
+=======
+>>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
 void EXTI15_10_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
