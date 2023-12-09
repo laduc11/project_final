@@ -21,7 +21,7 @@ int get_flag(int idx_timer)
 }
 
 /*
-Count down and triggle the flag when counter = 0
+Count down and trigger the flag when counter = 0
 input: ID of timer
 output: none
 */

@@ -22,7 +22,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "button.h"
+#include "software_timer.h"
+#include "scheduler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,10 +104,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  init_button();
+  SCH_Init();
+
   while (1)
   {
 	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 	  HAL_Delay(2000);
+
+	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -341,12 +348,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM2)
 	{
-		// TODO. The interrupt in timer2
+		// TODO. The interrupt in timer2, time cycle = 10ms
+		SCH_Update();
+		get_key();
 	}
 
 	if (htim->Instance == TIM3)
 	{
-		// TODO. The interrupt in timer3
+		// TODO. The interrupt in timer3, time cycle = 1ms
 	}
 }
 /* USER CODE END 4 */

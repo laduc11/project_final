@@ -16,10 +16,12 @@ typedef enum
 {
 	NORMAL = 0,
 	PRESSED = 1,
-	LONGPRESSED = 2
+	LONG_PRESSED = 2
 } statusButton;
 
+void init_button();
 void get_key();
-statusButton get_flag(uint8_t buttonIdx);
+void processKey();
+statusButton get_button_flag(uint8_t buttonIdx);
 
 #endif /* INC_BUTTON_H_ */
