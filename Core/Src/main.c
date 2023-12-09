@@ -41,10 +41,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
-<<<<<<< HEAD
 TIM_HandleTypeDef htim3;
-=======
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
 
 UART_HandleTypeDef huart2;
 
@@ -57,10 +54,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM2_Init(void);
-<<<<<<< HEAD
 static void MX_TIM3_Init(void);
-=======
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -100,15 +94,10 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_TIM2_Init();
-<<<<<<< HEAD
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_Base_Start_IT(&htim3);
-=======
-  /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim2);
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -207,7 +196,6 @@ static void MX_TIM2_Init(void)
 }
 
 /**
-<<<<<<< HEAD
   * @brief TIM3 Initialization Function
   * @param None
   * @retval None
@@ -253,8 +241,6 @@ static void MX_TIM3_Init(void)
 }
 
 /**
-=======
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -270,11 +256,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-<<<<<<< HEAD
   huart2.Init.BaudRate = 9600;
-=======
-  huart2.Init.BaudRate = 115200;
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -307,7 +289,6 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-<<<<<<< HEAD
   HAL_GPIO_WritePin(GPIOA, BUTTON_2_Pin|LED_2_1_Pin|LD2_Pin|BUZZER_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -315,9 +296,6 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, GPIO_PIN_RESET);
-=======
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -325,7 +303,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-<<<<<<< HEAD
   /*Configure GPIO pins : BUTTON_2_Pin LED_2_1_Pin LD2_Pin BUZZER_Pin */
   GPIO_InitStruct.Pin = BUTTON_2_Pin|LED_2_1_Pin|LD2_Pin|BUZZER_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -358,14 +335,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(LED_1_2_GPIO_Port, &GPIO_InitStruct);
-=======
-  /*Configure GPIO pin : LD2_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
