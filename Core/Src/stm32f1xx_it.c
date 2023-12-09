@@ -57,10 +57,8 @@
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim2;
-<<<<<<< HEAD
+extern TIM_HandleTypeDef htim3;
 extern UART_HandleTypeDef huart2;
-=======
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -218,7 +216,20 @@ void TIM2_IRQHandler(void)
 }
 
 /**
-<<<<<<< HEAD
+  * @brief This function handles TIM3 global interrupt.
+  */
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
+}
+
+/**
   * @brief This function handles USART2 global interrupt.
   */
 void USART2_IRQHandler(void)
@@ -233,8 +244,6 @@ void USART2_IRQHandler(void)
 }
 
 /**
-=======
->>>>>>> f6e77b58c50b94a8411a5dec8e6a8ebfe43388af
   * @brief This function handles EXTI line[15:10] interrupts.
   */
 void EXTI15_10_IRQHandler(void)
