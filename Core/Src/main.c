@@ -25,6 +25,7 @@
 #include "button.h"
 #include "software_timer.h"
 #include "scheduler.h"
+#include "auto_mode.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
