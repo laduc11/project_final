@@ -16,11 +16,12 @@
 #define VERTI 	1
 
 extern int led_time[3];
-extern int horizontal_countdown;
-extern int vertical_countdown;
+extern int hor_countdown;
+extern int ver_countdown;
 
-enum LightState {Init, Red_Green, Red_Yellow, Green_Red, Yellow_Red};
-extern enum LightState light_state;
+enum StateNormal {Init, Red_Green, Red_Yellow, Green_Red, Yellow_Red};
+extern enum StateNormal state_auto_mode;
 
+void traffic_light(void);
 
 #endif /* INC_AUTO_MODE_H_ */
