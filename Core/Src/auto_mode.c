@@ -11,6 +11,8 @@ uint8_t led_time[3] = {10, 4, 6};
 uint8_t hor_countdown = 0;
 uint8_t ver_countdown = 0;
 StateNormal state_auto_mode = INIT;
+int onPedes = 0;
+
 
 /*
  * Turn off all traffic light
@@ -96,6 +98,7 @@ void H_Red()
  * Input: none
  * Output: none
  * */
+
 void traffic_light(void)
 {
 	switch (state_auto_mode)
@@ -105,6 +108,7 @@ void traffic_light(void)
 		hor_countdown = led_time[RED];
 		ver_countdown = led_time[GREEN];
 		state_auto_mode = RED_GREEN;
+		onPedes = 0;
 		break;
 	case RED_GREEN:
 		hor_countdown--;

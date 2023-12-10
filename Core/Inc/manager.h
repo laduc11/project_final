@@ -25,5 +25,9 @@ typedef enum
 extern STATE_MODE state_mode;
 
 void manager_state();
+void clearScreen();
+void printString(const char *str);
+void printNumber(int val);
+
 
 #endif /* INC_MANAGER_H_ */
