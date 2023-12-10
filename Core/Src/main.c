@@ -112,15 +112,14 @@ int main(void)
   // Initial start parameter
   init_button();
   SCH_Init();
-  set_timer(0, 1);
 
   // Add tasks to scheduler
-//  SCH_Add_Task(manager_state, 100, 1000);
+  SCH_Add_Task(get_key, 10, 10);
+  SCH_Add_Task(manager_state, 10, 100);
+  SCH_Add_Task(stateUI, 10, 1000);
 
   while (1)
   {
-
-	  // Task cannot blink led with 2Hz
 	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
@@ -372,10 +371,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM2)
   {
     // TODO. The interrupt in timer2, time cycle = 10ms
-    run_timer(0);
     SCH_Update();
-    get_key();
-    processKey();
   }
 
   if (htim->Instance == TIM3)

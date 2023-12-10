@@ -125,6 +125,8 @@ uint8_t SCH_Delete(uint32_t TaskID)
 // Run the task in the array of task
 void SCH_Dispatch_Tasks()
 {
+	if (NumsOfTask == 0)
+		return;
     while (SCH_Tasks_G[0].RunMe == 1 || SCH_Tasks_G[0].Delay == 0)
     {
         // Run the task

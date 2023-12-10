@@ -61,6 +61,36 @@ void get_key()
 		previousStatus[i][1] = previousStatus[i][2];
 		previousStatus[i][2] = (HAL_GPIO_ReadPin(button[i].port, button[i].pin) == GPIO_PIN_RESET) ? PRESSED : NORMAL;
 	}
+
+	// Process key
+	for (int i = 0; i < MAX_BUTTON; i++)
+	{
+        if ((previousStatus[i][0] == PRESSED) &&
+            (previousStatus[i][1] == PRESSED) &&
+            (previousStatus[i][2] == PRESSED))
+        {
+            if (isPressed)
+            {
+            	counter[i]--;
+            	if (counter[i] == 0)
+            	{
+            		counter[i] = WAITING_TIME;
+            		buttonFlag[i] = LONG_PRESSED;
+            	}
+            }
+            else
+            {
+            	isPressed = 1;
+            	buttonFlag[i] = PRESSED;
+            }
+        }
+        else
+        {
+        	isPressed = 0;
+        	counter[i] = WAITING_TIME;
+        	buttonFlag[i] = NORMAL;
+        }
+	}
 }
 
 /*

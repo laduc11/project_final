@@ -26,19 +26,20 @@ void init_manual()
  * Input: none
  * Output: none
  * */
-void red_changing_UI(){
-	if(get_flag(0) == 1){
-		if(toggleLED == 1){
-			// turn on all led red
-			V_Red();
-			H_Red();
-		}else{
-			// turn off all led
-			turn_off_light();
-		}
-		toggleLED = 1 - toggleLED;
-		set_timer(0, 100);
-	}
+void red_changing_UI()
+{
+    if (toggleLED == 1)
+    {
+        // turn on all led red
+        V_Red();
+        H_Red();
+    }
+    else
+    {
+        // turn off all led
+        turn_off_light();
+    }
+    toggleLED = 1 - toggleLED;
 }
 
 /*
@@ -46,19 +47,20 @@ void red_changing_UI(){
  * Input: none
  * Output: none
  * */
-void yellow_changing_UI(){
-	if(get_flag(0) == 1){
-		if(toggleLED == 1){
-			// turn on all led yellow
-			V_Yellow();
-			H_Yellow();
-		}else{
-			// turn off all led
-			turn_off_light();
-		}
-		toggleLED = 1 - toggleLED;
-		set_timer(0, 100);
-	}
+void yellow_changing_UI()
+{
+    if (toggleLED == 1)
+    {
+        // turn on all led yellow
+        V_Yellow();
+        H_Yellow();
+    }
+    else
+    {
+        // turn off all led
+        turn_off_light();
+    }
+    toggleLED = 1 - toggleLED;
 }
 
 /*
@@ -66,19 +68,20 @@ void yellow_changing_UI(){
  * Input: none
  * Output: none
  * */
-void green_changing_UI(){
-	if(get_flag(0) == 1){
-		if(toggleLED == 1){
-			// turn on led green
-			V_Green();
-			H_Green();
-		}else{
-			// turn off all led
-			turn_off_light();
-		}
-		toggleLED = 1 - toggleLED;
-		set_timer(0, 100);
-	}
+void green_changing_UI()
+{
+    if (toggleLED == 1)
+    {
+        // turn on led green
+        V_Green();
+        H_Green();
+    }
+    else
+    {
+        // turn off all led
+        turn_off_light();
+    }
+    toggleLED = 1 - toggleLED;
 }
 
 /*
