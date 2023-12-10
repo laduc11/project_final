@@ -11,6 +11,8 @@
 #include "auto_mode.h"
 #include "manual_mode.h"
 #include "button.h"
+#include <stdio.h>
+#include "string.h"
 
 typedef enum
 {

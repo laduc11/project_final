@@ -8,6 +8,19 @@
 #include "manager.h"
 
 STATE_MODE state_mode = AUTO_MODE;
+UART_HandleTypeDef huart2;
+
+void clearTerminal(){
+	char clr[] = "\033[2J";
+	HAL_UART_Transmit(&huart2, (uint8_t *)clr, sizeof(clr) - 1, HAL_MAX_DELAY);
+}
+void printString(const char *str){
+	HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+}
+void printValue(int val){
+	char str[100];
+	HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "%d\r\n", val), HAL_MAX_DELAY);
+}
 
 /*
  * Finite state machine to change mode of traffic light
