@@ -12,10 +12,16 @@
 #include "manual_mode.h"
 #include "button.h"
 
-typedef enum {auto_mode, red_changing, yellow_changing, green_changing} STATE_MODE;
+typedef enum
+{
+	AUTO_MODE = 0,
+	RED_CHANGING = 1,
+	YELLOW_CHANGING = 2,
+	GREEN_CHANGING = 3
+} STATE_MODE;
 
 extern STATE_MODE state_mode;
 
-
+void manager_state();
 
 #endif /* INC_MANAGER_H_ */

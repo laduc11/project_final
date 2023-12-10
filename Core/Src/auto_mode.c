@@ -7,9 +7,9 @@
 
 #include "auto_mode.h"
 
-int led_time[3] = {10, 4, 6};
-int hor_countdown = 0;
-int ver_countdown = 0;
+uint8_t led_time[3] = {10, 4, 6};
+uint8_t hor_countdown = 0;
+uint8_t ver_countdown = 0;
 StateNormal state_auto_mode = INIT;
 
 /*
@@ -26,55 +26,69 @@ void turn_off_light()
 }
 
 /*
- * Turn on led red in a horizontal direction and led green in a vertical direction
+ * Turn on led red in a vertical direction
  * Input: none
  * Output: none
  * */
-void Red_Green()
+void V_Red()
 {
 	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, SET);
 	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, RESET);
-	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, RESET);
-	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
 }
 
 /*
- * Turn on led red in a horizontal direction and led yellow in a vertical direction
+ * Turn on led yellow in a vertical direction
  * Input: none
  * Output: none
  * */
-void Red_Yellow()
+void V_Yellow()
 {
 	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, RESET);
-	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
+	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, SET);
 }
 
 /*
- * Turn on led green in a horizontal direction and led red in a vertical direction
+ * Turn on led green in a vertical direction
  * Input: none
  * Output: none
  * */
-void Green_Red()
+void V_Green()
 {
 	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, RESET);
 	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, SET);
-	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
 }
 
 /*
- * Turn on led yellow in a horizontal direction and led red in a vertical direction
+ * Turn on led red in a horizontal direction
  * Input: none
  * Output: none
  * */
-void Yellow_Red()
+void H_Red()
 {
-	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, SET);
-	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
+	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_2_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_2_2_Pin, RESET);
+}
+
+/*
+ * Turn on led yellow in a horizontal direction
+ * Input: none
+ * Output: none
+ * */
+void H_Yellow()
+{
+	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_2_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_2_2_Pin, SET);
+}
+
+/*
+ * Turn on led green in a horizontal direction
+ * Input: none
+ * Output: none
+ * */
+void H_Green()
+{
+	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_2_1_Pin, RESET);
+	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_2_2_Pin, SET);
 }
 
 /*
@@ -95,7 +109,8 @@ void traffic_light(void)
 	case RED_GREEN:
 		hor_countdown--;
 		ver_countdown--;
-		Red_Green();
+		V_Red();
+		H_Green();
 		if (ver_countdown <= 0)
 		{
 			state_auto_mode = RED_YELLOW;
@@ -105,7 +120,8 @@ void traffic_light(void)
 	case RED_YELLOW:
 		hor_countdown--;
 		ver_countdown--;
-		Red_Yellow();
+		V_Red();
+		H_Yellow();
 		if (hor_countdown <= 0)
 		{
 			state_auto_mode = GREEN_RED;
@@ -116,7 +132,8 @@ void traffic_light(void)
 	case GREEN_RED:
 		hor_countdown--;
 		ver_countdown--;
-		Green_Red();
+		V_Green();
+		H_Red();
 		if (hor_countdown <= 0)
 		{
 			state_auto_mode = YELLOW_RED;
@@ -126,7 +143,8 @@ void traffic_light(void)
 	case YELLOW_RED:
 		hor_countdown--;
 		ver_countdown--;
-		Yellow_Red();
+		V_Yellow();
+		H_Red();
 		if (hor_countdown <= 0)
 		{
 			state_auto_mode = RED_GREEN;

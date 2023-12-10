@@ -25,11 +25,18 @@ typedef enum {
 	YELLOW_RED = 4
 } StateNormal;
 
-extern int led_time[3];
-extern int hor_countdown;
-extern int ver_countdown;
+extern uint8_t led_time[3];
+extern uint8_t hor_countdown;
+extern uint8_t ver_countdown;
 extern StateNormal state_auto_mode;
 
 void traffic_light(void);
+void turn_off_light();
+void V_Red();
+void V_Yellow();
+void V_Green();
+void H_Red();
+void H_Yellow();
+void H_Green();
 
 #endif /* INC_AUTO_MODE_H_ */

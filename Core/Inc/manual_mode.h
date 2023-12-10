@@ -10,12 +10,14 @@
 
 #include "main.h"
 #include "software_timer.h"
+#include "auto_mode.h"
 
+void init_manual();
 void red_changing_UI(void);
 void yellow_changing_UI(void);
 void green_changing_UI(void);
-
-
-
+void increase_led_red();
+void increase_led_yellow();
+void increase_led_green();
 
 #endif /* INC_MANUAL_MODE_H_ */

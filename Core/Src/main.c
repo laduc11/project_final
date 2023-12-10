@@ -26,6 +26,9 @@
 #include "software_timer.h"
 #include "scheduler.h"
 #include "auto_mode.h"
+#include "manual_mode.h"
+#include "manager.h"
+#include "pedestian.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,11 +115,12 @@ int main(void)
   set_timer(0, 1);
 
   // Add tasks to scheduler
-  SCH_Add_Task(traffic_light, 500, 1000);
+  SCH_Add_Task(manager_state, 100, 1000);
 
   while (1)
   {
-    SCH_Dispatch_Tasks();
+	  // Task cannot blink led with 2Hz
+	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

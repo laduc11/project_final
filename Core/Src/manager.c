@@ -7,47 +7,64 @@
 
 #include "manager.h"
 
+STATE_MODE state_mode = AUTO_MODE;
 
-
-STATE_MODE state_mode = auto_mode;
-
-
+/*
+ * Finite state machine to change mode of traffic light
+ * Input: none
+ * Output: none
+ * */
 void manager_state(){
 	switch(state_mode){
-	case auto_mode:
+	case AUTO_MODE:
 		traffic_light();
+
 		if(get_button_flag(0) == PRESSED || get_button_flag(0) == LONG_PRESSED) {
-			state_mode = red_changing;
+			state_mode = RED_CHANGING;
+			init_manual();
 		}
+
 		if(get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED) {
 			//set_flag_pedes = 1;
 		}
 		break;
-	case red_changing:
+	case RED_CHANGING:
+		red_changing_UI();
+
 		if(get_button_flag(0) == PRESSED || get_button_flag(0) == LONG_PRESSED) {
-			state_mode = yellow_changing;
+			state_mode = YELLOW_CHANGING;
+			init_manual();
 		}
 
 		if(get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED) {
-			led_time[RED]++;
+			increase_led_red();
 		}
 		break;
-	case yellow_changing:
+	case YELLOW_CHANGING:
+		yellow_changing_UI();
+
 		if(get_button_flag(0) == PRESSED || get_button_flag(0) == LONG_PRESSED) {
-			state_mode = green_changing;
+			state_mode = GREEN_CHANGING;
+			init_manual();
 		}
 
 		if(get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED) {
-			led_time[YELLOW]++;
+			increase_led_yellow();
 		}
 		break;
-	case green_changing:
+	case GREEN_CHANGING:
+		green_changing_UI();
+
 		if(get_button_flag(0) == PRESSED || get_button_flag(0) == LONG_PRESSED) {
-			state_mode = auto_mode;
+			state_mode = AUTO_MODE;
+			state_auto_mode = INIT;
+			if (led_time[RED] != led_time[YELLOW] + led_time[GREEN]) {
+				led_time[RED] = led_time[YELLOW] + led_time[GREEN];
+			}
 		}
 
 		if(get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED) {
-			led_time[GREEN]++;
+			increase_led_green();
 		}
 		break;
 	default:
