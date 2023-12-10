@@ -92,6 +92,7 @@ void green_changing_UI()
 void increase_led_red()
 {
 	led_time[RED] = led_time[RED] + 1;
+	if(led_time[RED] == 40) led_time[RED] = 1;
 }
 
 /*

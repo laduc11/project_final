@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "string.h"
 
-#define MAX_COUNTER 100	// 100*10ms = 1000ms
+#define MAX_COUNTER 100 // 100*10ms = 1000ms
 
 typedef enum
 {
@@ -28,5 +28,8 @@ extern STATE_MODE state_mode;
 
 void manager_state();
 void stateUI();
+void clearScreen();
+void printString(const char *str);
+void printNumber(int val);
 
 #endif /* INC_MANAGER_H_ */
