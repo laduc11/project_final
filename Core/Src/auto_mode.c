@@ -30,7 +30,7 @@ void turn_off_light()
  * Input: none
  * Output: none
  * */
-void V_Red()
+void V_Green()
 {
 	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, SET);
 	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, RESET);
@@ -52,7 +52,7 @@ void V_Yellow()
  * Input: none
  * Output: none
  * */
-void V_Green()
+void V_Red()
 {
 	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_1_1_Pin, RESET);
 	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, SET);
@@ -63,10 +63,10 @@ void V_Green()
  * Input: none
  * Output: none
  * */
-void H_Red()
+void H_Green()
 {
-	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_2_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_2_2_Pin, RESET);
+	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
 }
 
 /*
@@ -76,8 +76,8 @@ void H_Red()
  * */
 void H_Yellow()
 {
-	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_2_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_2_2_Pin, SET);
+	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
 }
 
 /*
@@ -85,10 +85,10 @@ void H_Yellow()
  * Input: none
  * Output: none
  * */
-void H_Green()
+void H_Red()
 {
-	HAL_GPIO_WritePin(LED_1_1_GPIO_Port, LED_2_1_Pin, RESET);
-	HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_2_2_Pin, SET);
+	HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, RESET);
+	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
 }
 
 /*
