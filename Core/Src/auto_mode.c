@@ -30,7 +30,6 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, RESET);
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, RESET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
-			HAL_GPIO_WritePin(HORN_GPIO_Port, HORN_Pin, RESET);
 			if(ver_countdown <= 0){
 				 light_state = Red_Yellow;
 				 ver_countdown = led_time[YELLOW];
@@ -43,7 +42,6 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, RESET);
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
-			HAL_GPIO_WritePin(HORN_GPIO_Port, HORN_Pin, SET);
 			if(hor_countdown <= 0){
 				 light_state = Green_Red;
 				 hor_countdown = led_time[GREEN];
@@ -57,7 +55,6 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, SET);
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
-			HAL_GPIO_WritePin(HORN_GPIO_Port, HORN_Pin, RESET);
 			if(hor_countdown <= 0){
 				 light_state = Yellow_Red;
 				 hor_countdown = led_time[YELLOW];
