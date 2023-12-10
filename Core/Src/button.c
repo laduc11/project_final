@@ -61,7 +61,6 @@ void get_key()
 		previousStatus[i][1] = previousStatus[i][2];
 		previousStatus[i][2] = (HAL_GPIO_ReadPin(button[i].port, button[i].pin) == GPIO_PIN_RESET) ? PRESSED : NORMAL;
 	}
-	processKey();
 }
 
 /*

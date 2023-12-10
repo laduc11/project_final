@@ -105,14 +105,16 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+  // Initial start parameter
   init_button();
   SCH_Init();
 
+  // Add tasks to scheduler
+  SCH_Add_Task(traffic_light, 500, 1000);
+
   while (1)
   {
-	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	  HAL_Delay(2000);
-
 	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
@@ -314,7 +316,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : BUTTON1_Pin BUTTON2_Pin */
   GPIO_InitStruct.Pin = BUTTON1_Pin|BUTTON2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_2_1_Pin LD2_Pin BUZZER_Pin */
@@ -352,6 +354,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		// TODO. The interrupt in timer2, time cycle = 10ms
 		SCH_Update();
 		get_key();
+		processKey();
 	}
 
 	if (htim->Instance == TIM3)

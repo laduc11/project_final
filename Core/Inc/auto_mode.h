@@ -8,6 +8,8 @@
 #ifndef INC_AUTO_MODE_H_
 #define INC_AUTO_MODE_H_
 
+#include "main.h"
+
 #define RED 	0
 #define YELLOW	1
 #define GREEN	2
@@ -15,12 +17,18 @@
 #define HORI 	0
 #define VERTI 	1
 
+typedef enum {
+	INIT = 0,
+	RED_GREEN = 1,
+	RED_YELLOW = 2,
+	GREEN_RED = 3,
+	YELLOW_RED = 4
+} StateNormal;
+
 extern int led_time[3];
 extern int hor_countdown;
 extern int ver_countdown;
-
-enum StateNormal {Init, Red_Green, Red_Yellow, Green_Red, Yellow_Red};
-extern enum StateNormal state_auto_mode;
+extern StateNormal state_auto_mode;
 
 void traffic_light(void);
 
