@@ -5,6 +5,7 @@
  *      Author: DELL
  */
 
+#include "main.h"
 #include "auto_mode.h"
 
 int led_time[3] = {10, 4, 6};
@@ -21,7 +22,7 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
 			hor_countdown = led_time[RED];
 			ver_countdown = led_time[GREEN];
-			light_state = Red_Green;
+			state_auto_mode = Red_Green;
 			break;
 		case Red_Green:
 			hor_countdown--;
@@ -31,7 +32,7 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, RESET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
 			if(ver_countdown <= 0){
-				 light_state = Red_Yellow;
+				 state_auto_mode = Red_Yellow;
 				 ver_countdown = led_time[YELLOW];
 			}
 			break;
@@ -43,7 +44,7 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
 			if(hor_countdown <= 0){
-				 light_state = Green_Red;
+				 state_auto_mode = Green_Red;
 				 hor_countdown = led_time[GREEN];
 				 ver_countdown = led_time[RED];
 			}
@@ -56,7 +57,7 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
 			if(hor_countdown <= 0){
-				 light_state = Yellow_Red;
+				 state_auto_mode = Yellow_Red;
 				 hor_countdown = led_time[YELLOW];
 			}
 			break;
@@ -68,7 +69,7 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, SET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
 			if(hor_countdown <= 0){
-				 light_state = Red_Green;
+				 state_auto_mode = Red_Green;
 				 hor_countdown = led_time[RED];
 				 ver_countdown = led_time[GREEN];
 			}

@@ -19,8 +19,8 @@ extern int led_time[3];
 extern int hor_countdown;
 extern int ver_countdown;
 
-enum StateNormal {Init, Red_Green, Red_Yellow, Green_Red, Yellow_Red};
-extern enum StateNormal state_auto_mode;
+enum StateAutoMode {Init, Red_Green, Red_Yellow, Green_Red, Yellow_Red};
+extern enum StateAutoMode state_auto_mode;
 
 void traffic_light(void);
 
