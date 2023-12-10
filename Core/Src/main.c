@@ -107,7 +107,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   init_button();
   SCH_Init();
-
+  set_timer(0, 1);
   while (1)
   {
 	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
@@ -350,6 +350,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if (htim->Instance == TIM2)
 	{
 		// TODO. The interrupt in timer2, time cycle = 10ms
+		run_timer(0);
 		SCH_Update();
 		get_key();
 	}

@@ -19,6 +19,7 @@ void traffic_light(void){
 			HAL_GPIO_WritePin(LED_1_2_GPIO_Port, LED_1_2_Pin, RESET);
 			HAL_GPIO_WritePin(LED_2_1_GPIO_Port, LED_2_1_Pin, RESET);
 			HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, RESET);
+			//if flag pedes = 1 chay
 			hor_countdown = led_time[RED];
 			ver_countdown = led_time[GREEN];
 			state_auto_mode = Red_Green;

@@ -9,6 +9,13 @@
 #define INC_MANUAL_MODE_H_
 
 #include "main.h"
+#include "software_timer.h"
+
+void red_changing_UI(void);
+void yellow_changing_UI(void);
+void green_changing_UI(void);
+
+
 
 
 #endif /* INC_MANUAL_MODE_H_ */
