@@ -70,7 +70,6 @@ void pedesRun(){
 	case RED_YELLOW:
 		if(hor_countdown <= 10) BuzzerLouder();
 		pedesGreen();
-
 		break;
 	case GREEN_RED:
 		buzzerDuty = 0;
