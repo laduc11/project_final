@@ -82,54 +82,59 @@ void Yellow_Red()
  * Input: none
  * Output: none
  * */
-void traffic_light(void){
-	switch(state_auto_mode){
-		case INIT:
-			turn_off_light();
+void traffic_light(void)
+{
+	switch (state_auto_mode)
+	{
+	case INIT:
+		turn_off_light();
+		hor_countdown = led_time[RED];
+		ver_countdown = led_time[GREEN];
+		state_auto_mode = RED_GREEN;
+		break;
+	case RED_GREEN:
+		hor_countdown--;
+		ver_countdown--;
+		Red_Green();
+		if (ver_countdown <= 0)
+		{
+			state_auto_mode = RED_YELLOW;
+			ver_countdown = led_time[YELLOW];
+		}
+		break;
+	case RED_YELLOW:
+		hor_countdown--;
+		ver_countdown--;
+		Red_Yellow();
+		if (hor_countdown <= 0)
+		{
+			state_auto_mode = GREEN_RED;
+			hor_countdown = led_time[GREEN];
+			ver_countdown = led_time[RED];
+		}
+		break;
+	case GREEN_RED:
+		hor_countdown--;
+		ver_countdown--;
+		Green_Red();
+		if (hor_countdown <= 0)
+		{
+			state_auto_mode = YELLOW_RED;
+			hor_countdown = led_time[YELLOW];
+		}
+		break;
+	case YELLOW_RED:
+		hor_countdown--;
+		ver_countdown--;
+		Yellow_Red();
+		if (hor_countdown <= 0)
+		{
+			state_auto_mode = RED_GREEN;
 			hor_countdown = led_time[RED];
 			ver_countdown = led_time[GREEN];
-			state_auto_mode = RED_GREEN;
-			break;
-		case RED_GREEN:
-			hor_countdown--;
-			ver_countdown--;
-			Red_Green();
-			if(ver_countdown <= 0){
-				state_auto_mode = RED_YELLOW;
-				ver_countdown = led_time[YELLOW];
-			}
-			break;
-		case RED_YELLOW:
-			hor_countdown--;
-			ver_countdown--;
-			Red_Yellow();
-			if(hor_countdown <= 0){
-				state_auto_mode = GREEN_RED;
-				hor_countdown = led_time[GREEN];
-				ver_countdown = led_time[RED];
-			}
-			break;
-		case GREEN_RED:
-			hor_countdown--;
-			ver_countdown--;
-			Green_Red();
-			if(hor_countdown <= 0){
-				state_auto_mode = YELLOW_RED;
-				hor_countdown = led_time[YELLOW];
-			}
-			break;
-		case YELLOW_RED:
-			hor_countdown--;
-			ver_countdown--;
-			Yellow_Red();
-			if(hor_countdown <= 0){
-				state_auto_mode = RED_GREEN;
-				hor_countdown = led_time[RED];
-				ver_countdown = led_time[GREEN];
-			}
-			break;
-		default:
-			break;
+		}
+		break;
+	default:
+		break;
 	}
 }
-
