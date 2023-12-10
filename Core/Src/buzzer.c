@@ -6,3 +6,5 @@
  */
 
 #include "buzzer.h"
+
+uint32_t freq;

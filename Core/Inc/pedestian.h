@@ -8,6 +8,6 @@
 #ifndef INC_PEDESTIAN_H_
 #define INC_PEDESTIAN_H_
 
-
+#include "main.h"
 
 #endif /* INC_PEDESTIAN_H_ */
