@@ -5,7 +5,6 @@
  *      Author: DELL
  */
 
-#include "main.h"
 #include "auto_mode.h"
 
 int led_time[3] = {10, 4, 6};

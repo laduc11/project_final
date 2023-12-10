@@ -4,6 +4,7 @@
  *  Created on: Dec 8, 2023
  *      Author: DELL
  */
+
 #include "main.h"
 
 #ifndef INC_AUTO_MODE_H_
