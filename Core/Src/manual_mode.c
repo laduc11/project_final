@@ -93,7 +93,9 @@ void increase_led_red()
 {
 	led_time[RED] = led_time[RED] + 1;
 	if(led_time[RED] == 40) led_time[RED] = 1;
-
+	clearScreen();
+	printString("RED TIME: ");
+	printNumber(led_time[RED]);
 }
 
 /*
@@ -106,7 +108,9 @@ void increase_led_yellow()
 	if (led_time[YELLOW] + led_time[GREEN] == led_time[RED])
 		return;
 	led_time[YELLOW] = led_time[YELLOW] + 1;
-
+	clearScreen();
+	printString("YELLOW TIME: ");
+	printNumber(led_time[RED]);
 }
 
 /*
@@ -119,5 +123,7 @@ void increase_led_green()
 	if (led_time[YELLOW] + led_time[GREEN] == led_time[RED])
 		return;
 	led_time[GREEN] = led_time[GREEN] + 1;
-
+	clearScreen();
+	printString("GREEN TIME: ");
+	printNumber(led_time[RED]);
 }

@@ -11,6 +11,9 @@
 #include "main.h"
 #include "software_timer.h"
 #include "auto_mode.h"
+#include "manager.h"
+#include <stdio.h>
+#include "string.h"
 
 void init_manual();
 void red_changing_UI(void);

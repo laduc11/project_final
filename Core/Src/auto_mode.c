@@ -147,6 +147,7 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		clearScreen();
 		printString("RED: ");
 		printNumber(hor_countdown);
 		printString("GREEN: ");
@@ -170,6 +171,7 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		clearScreen();
 		printString("RED: ");
 		printNumber(hor_countdown);
 		printString("YELLOW: ");
@@ -192,6 +194,7 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		clearScreen();
 		printString("GREEN: ");
 		printNumber(hor_countdown);
 		printString("RED: ");
@@ -215,6 +218,7 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		clearScreen();
 		printString("YELLOW: ");
 		printNumber(hor_countdown);
 		printString("RED: ");
