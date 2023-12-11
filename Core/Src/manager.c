@@ -11,7 +11,6 @@ STATE_MODE state_mode = AUTO_MODE;
 
 int buzzerDuty = 0;
 int flagPedes = 0;
-int buzzerFaster = 0;
 int buzzerCounter = 0;
 
 void clearScreen()

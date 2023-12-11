@@ -9,6 +9,9 @@
 #define INC_AUTO_MODE_H_
 
 #include "main.h"
+#include <stdio.h>
+#include "string.h"
+#include "manager.h"
 
 #define RED 	0
 #define YELLOW	1

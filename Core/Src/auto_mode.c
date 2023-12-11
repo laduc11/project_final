@@ -147,6 +147,10 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		printString("RED: ");
+		printNumber(hor_countdown);
+		printString("GREEN: ");
+		printNumber(ver_countdown);
 		break;
 	case RED_YELLOW:
 		hor_countdown--;
@@ -166,6 +170,10 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		printString("RED: ");
+		printNumber(hor_countdown);
+		printString("YELLOW: ");
+		printNumber(ver_countdown);
 		break;
 	case GREEN_RED:
 		hor_countdown--;
@@ -184,6 +192,10 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		printString("GREEN: ");
+		printNumber(hor_countdown);
+		printString("RED: ");
+		printNumber(ver_countdown);
 		break;
 	case YELLOW_RED:
 		hor_countdown--;
@@ -203,6 +215,10 @@ void traffic_light(void)
 		else{
 			pedesOff();
 		}
+		printString("YELLOW: ");
+		printNumber(hor_countdown);
+		printString("RED: ");
+		printNumber(ver_countdown);
 		break;
 	default:
 		break;
