@@ -10,8 +10,9 @@
 STATE_MODE state_mode = AUTO_MODE;
 
 int buzzerDuty = 0;
-int buzzerFlag = 0;
+int flagPedes = 0;
 int buzzerFaster = 0;
+int buzzerCounter = 0;
 
 void clearScreen()
 {
@@ -26,24 +27,6 @@ void printNumber(int val)
 {
 	char str[100];
 	HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "%d\r\n", val), HAL_MAX_DELAY);
-}
-
-void pedesOff()
-{
-	HAL_GPIO_WritePin(LED_PE_1_GPIO_Port, LED_PE_1_Pin, RESET);
-	HAL_GPIO_WritePin(LED_PE_2_GPIO_Port, LED_PE_2_Pin, RESET);
-}
-
-void pedesGreen()
-{
-	HAL_GPIO_WritePin(LED_PE_1_GPIO_Port, LED_PE_1_Pin, SET);
-	HAL_GPIO_WritePin(LED_PE_2_GPIO_Port, LED_PE_2_Pin, RESET);
-}
-
-void pedesRed()
-{
-	HAL_GPIO_WritePin(LED_PE_1_GPIO_Port, LED_PE_1_Pin, RESET);
-	HAL_GPIO_WritePin(LED_PE_2_GPIO_Port, LED_PE_2_Pin, SET);
 }
 
 void buzzerReset()
@@ -72,30 +55,47 @@ void BuzzerLouder()
 
 void pedesRun()
 {
-	switch (state_auto_mode)
-	{
-	case INIT:
-	case RED_GREEN:
-		if (hor_countdown <= 10)
-			BuzzerLouder();
-		pedesGreen();
-		break;
-	case RED_YELLOW:
-		if (hor_countdown <= 10)
-			BuzzerLouder();
-		pedesGreen();
-		break;
-	case GREEN_RED:
-		buzzerDuty = 0;
-		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
-		pedesRed();
-		break;
-	case YELLOW_RED:
-		buzzerDuty = 0;
-		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
-		pedesRed();
-		break;
+	if (buzzerFlag == 0){
+		return;
 	}
+	else{
+		switch (state_auto_mode)
+		{
+		case INIT:
+
+		case RED_GREEN:
+			if (buzzerCounter >= hor_countdown ) {
+				buzzerCounter = 0;
+				BuzzerLouder();
+			}
+			else {
+				buzzerCounter++;
+			}
+
+			break;
+		case RED_YELLOW:
+			if (buzzerCounter >= hor_countdown ) {
+				buzzerCounter = 0;
+				BuzzerLouder();
+			}
+			else {
+				buzzerCounter++;
+			}
+			break;
+		case GREEN_RED:
+			buzzerCounter = 0;
+			buzzerDuty = 0;
+			__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+			break;
+		case YELLOW_RED:
+			buzzerCounter = 0;
+			buzzerDuty = 0;
+			__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+			break;
+		}
+	}
+
+
 }
 
 void stateUI()
@@ -138,7 +138,7 @@ void manager_state()
 
 		if (get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED)
 		{
-			// set_flag_pedes = 1;
+
 		}
 		break;
 	case RED_CHANGING:

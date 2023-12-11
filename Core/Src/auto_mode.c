@@ -12,7 +12,7 @@ uint8_t hor_countdown = 0;
 uint8_t ver_countdown = 0;
 StateNormal state_auto_mode = INIT;
 int onPedes = 0;
-
+int buzzerFlag = 0;
 
 /*
  * Turn off all traffic light
@@ -93,6 +93,26 @@ void H_Red()
 	HAL_GPIO_WritePin(LED_2_2_GPIO_Port, LED_2_2_Pin, SET);
 }
 
+void pedesOff()
+{
+	HAL_GPIO_WritePin(LED_PE_1_GPIO_Port, LED_PE_1_Pin, RESET);
+	HAL_GPIO_WritePin(LED_PE_2_GPIO_Port, LED_PE_2_Pin, RESET);
+}
+
+void pedesGreen()
+{
+	HAL_GPIO_WritePin(LED_PE_1_GPIO_Port, LED_PE_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_PE_2_GPIO_Port, LED_PE_2_Pin, RESET);
+}
+
+void pedesRed()
+{
+	HAL_GPIO_WritePin(LED_PE_1_GPIO_Port, LED_PE_1_Pin, RESET);
+	HAL_GPIO_WritePin(LED_PE_2_GPIO_Port, LED_PE_2_Pin, SET);
+}
+
+
+
 /*
  * Activate current traffic light state
  * Input: none
@@ -120,6 +140,13 @@ void traffic_light(void)
 			state_auto_mode = RED_YELLOW;
 			ver_countdown = led_time[YELLOW];
 		}
+		if (onPedes == 1){
+			pedesGreen();
+			if (hor_countdown <= 10) buzzerFlag = 1;
+		}
+		else{
+			pedesOff();
+		}
 		break;
 	case RED_YELLOW:
 		hor_countdown--;
@@ -132,6 +159,13 @@ void traffic_light(void)
 			hor_countdown = led_time[GREEN];
 			ver_countdown = led_time[RED];
 		}
+		if (onPedes == 1){
+			pedesGreen();
+			if (hor_countdown <= 10) buzzerFlag = 1;
+		}
+		else{
+			pedesOff();
+		}
 		break;
 	case GREEN_RED:
 		hor_countdown--;
@@ -142,6 +176,13 @@ void traffic_light(void)
 		{
 			state_auto_mode = YELLOW_RED;
 			hor_countdown = led_time[YELLOW];
+		}
+		if (onPedes == 1){
+			pedesRed();
+			buzzerFlag = 0;
+		}
+		else{
+			pedesOff();
 		}
 		break;
 	case YELLOW_RED:
@@ -154,6 +195,13 @@ void traffic_light(void)
 			state_auto_mode = RED_GREEN;
 			hor_countdown = led_time[RED];
 			ver_countdown = led_time[GREEN];
+		}
+		if (onPedes == 1){
+			pedesRed();
+			buzzerFlag = 0;
+		}
+		else{
+			pedesOff();
 		}
 		break;
 	default:

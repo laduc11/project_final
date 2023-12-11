@@ -30,6 +30,7 @@ extern uint8_t hor_countdown;
 extern uint8_t ver_countdown;
 extern StateNormal state_auto_mode;
 extern int onPedes;
+extern int buzzerFlag;
 
 void traffic_light(void);
 void turn_off_light();
