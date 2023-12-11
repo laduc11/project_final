@@ -126,7 +126,6 @@ void manager_state()
 	switch (state_mode)
 	{
 	case AUTO_MODE:
-		traffic_light();
 
 		if (get_button_flag(0) == PRESSED || get_button_flag(0) == LONG_PRESSED)
 		{

@@ -93,6 +93,7 @@ void increase_led_red()
 {
 	led_time[RED] = led_time[RED] + 1;
 	if(led_time[RED] == 40) led_time[RED] = 1;
+
 }
 
 /*
@@ -105,6 +106,7 @@ void increase_led_yellow()
 	if (led_time[YELLOW] + led_time[GREEN] == led_time[RED])
 		return;
 	led_time[YELLOW] = led_time[YELLOW] + 1;
+
 }
 
 /*
@@ -117,4 +119,5 @@ void increase_led_green()
 	if (led_time[YELLOW] + led_time[GREEN] == led_time[RED])
 		return;
 	led_time[GREEN] = led_time[GREEN] + 1;
+
 }
