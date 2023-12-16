@@ -10,7 +10,7 @@
 
 #include "main.h"
 
-#define MAX_BUTTON 2
+#define MAX_BUTTON 4
 
 typedef enum
 {
@@ -21,7 +21,6 @@ typedef enum
 
 void init_button();
 void get_key();
-void processKey();
 statusButton get_button_flag(uint8_t buttonIdx);
 
 #endif /* INC_BUTTON_H_ */
