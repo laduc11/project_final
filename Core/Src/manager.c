@@ -131,12 +131,15 @@ void manager_state()
 		{
 			state_mode = RED_CHANGING;
 			init_manual();
+			printString("MODE ");
+			printValue(2);
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		}
 
 		if (get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED)
 		{
-
+			printString("PRESSED BUTTON ");
+			printValue(2);
 		}
 		break;
 	case RED_CHANGING:
@@ -144,12 +147,15 @@ void manager_state()
 		{
 			state_mode = YELLOW_CHANGING;
 			init_manual();
+			printString("MODE ");
+			printValue(3);
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		}
 
 		if (get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED)
 		{
 			increase_led_red();
+			printString("INCREASE RED TIMER : ");
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		}
 		break;
@@ -158,12 +164,15 @@ void manager_state()
 		{
 			state_mode = GREEN_CHANGING;
 			init_manual();
+			printString("MODE ");
+			printValue(4);			
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		}
 
 		if (get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED)
 		{
 			increase_led_yellow();
+			printString("INCREASE YELLOW TIMER : ");
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		}
 		break;
@@ -183,6 +192,7 @@ void manager_state()
 		if (get_button_flag(1) == PRESSED || get_button_flag(1) == LONG_PRESSED)
 		{
 			increase_led_green();
+			printString("INCREASE GREEN TIMER : ");
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		}
 		break;
