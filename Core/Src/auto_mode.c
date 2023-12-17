@@ -172,7 +172,7 @@ void traffic_light(void)
 			pedesOff();
 		}
 		clearScreen();
-		printString("AMBER: ");
+		printString("YELLOW: ");
 		printNumber(ver_countdown);
 		printString("RED: ");
 		printNumber(hor_countdown);
